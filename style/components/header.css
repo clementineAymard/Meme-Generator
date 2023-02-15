@@ -1,0 +1,29 @@
+header {
+    background-color: var(--clrbg);
+    color: var(--clrtxt);
+    margin-block-end: 1rem;
+}
+
+nav {
+    margin-inline-end: 2rem;
+}
+
+nav li {
+    display: block;
+    padding: 1.25rem;
+    cursor: pointer;
+
+    transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+nav li.open {
+    box-shadow: inset 0px -4px grey;
+}
+
+ul li:last-child{
+    border-inline-start: solid 1px var(--clrtxt);
+}
+
+nav li:hover {
+    background-color: grey;
+}

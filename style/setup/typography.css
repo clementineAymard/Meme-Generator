@@ -1,0 +1,9 @@
+@font-face {
+    font-family: meow;
+    src: url("/fonts/Meow_Script/MeowScript-Regular.ttf");
+}
+
+@font-face {
+    font-family: varela;
+    src: url("/fonts/Varela_Round/VarelaRound-Regular.ttf");
+}

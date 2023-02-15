@@ -1,0 +1,8 @@
+html {
+    font-family: varela;
+}
+
+image {
+    width:100%;
+    object-fit: cover;
+}

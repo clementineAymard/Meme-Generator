@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    flex-direction: column;
+}
+
+.meme-editor {
+    grid-template-columns: repeat(2, minmax(300px, 450px));
+    gap: 2rem;
+
+    margin-inline: auto;
+    padding: 0.5rem;
+    width: fit-content;
+    background-color: blue;
+
+    opacity: 0;
+    pointer-events: none;
+}
+
+.tool-box{ 
+    background-color: red;
+}
+
+.image-gallery {
+    background-color: rgb(232, 232, 232);
+    display: grid;
+    opacity: 1;
+}

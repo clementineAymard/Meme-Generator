@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/styles.css">
+    <title>Meme Generator</title>
+</head>
+
+<body onload="onInit()" class="flex"> <!-- class="grid" -->
+    <header class="flex align-center space-between">
+        <div class="logo">meme-gen</div>
+        <nav>
+            <ul class="clean-list flex space-evenly">
+                <li class="gallery" onclick="onSelectMenuItem(this)">Gallery</li>
+                <li class="memes" onclick="onSelectMenuItem(this)">Memes</li>
+                <li class="about" onclick="onSelectMenuItem(this)">About</li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="image-gallery"></section>
+
+    <main class="meme-editor grid">
+        <div class="canvas-container">
+            <canvas></canvas>
+        </div>
+        <div class="tool-box">Tools</div>
+    </main>
+
+    <section class="memes-gallery"></section>
+
+    <div class="modal"></div>
+
+    <footer>Cozyrights © Clementine Aymard </footer>
+
+    <script src="/js/service/util.service.js"></script>
+    <script src="/js/service/memes.service.js"></script>
+    <script src="/js/service/gallery.service.js"></script>
+    <script src="/js/service/main.service.js"></script>
+    <script src="/js/service/nav.service.js"></script>
+    <script src="/js/main.controller.js"></script>
+</body>
+</html>
