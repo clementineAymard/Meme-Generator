@@ -5,7 +5,15 @@ let gCtx
 function onInit() {
     console.log('init')
 
-    const menuItem = getValFromParam('menu')
+    gElCanvas = document.querySelector('canvas')
+    gCtx = gElCanvas.getContext('2d')
+
+    // set active section to render  
+    let menuItem = getValFromParam('menu')
+    if (!menuItem) {
+        menuItem = 'gallery'
+        setQueryParams({ gallery: 'images' })
+    }
     selectItem(document.querySelector(`.${menuItem}`))
 
     render(menuItem)
@@ -25,6 +33,7 @@ function render(menuItem) {
     }
 }
 
+//--------------------------------------------------GALLERY----------------------------------------------------------/
 function renderGallery() {
     console.log('render gallery')
     const editorStatus = getValFromParam('gallery')
@@ -34,42 +43,35 @@ function renderGallery() {
     } else if (editorStatus === 'editor') {
         // show image editor
         renderEditor()
-        gElCanvas = document.querySelector('canvas')
-        gCtx = gElCanvas.getContext('2d')
-
-        resizeCanvas()
-        window.addEventListener('resize', resizeCanvas)
-
-        drawImg(src)
     }
-
-
 }
 
 function renderImages() {
     console.log('render images')
-    document.querySelector('.image-gallery').style.opacity = 1
-    
+    document.querySelector('.meme-editor').classList.remove('open')
+    let elGal = document.querySelector('.image-gallery')
+    elGal.classList.add('open')
+    const imgs = getImgs()
+    // debugger
+    let strHtml = imgs.map((img) => `<img src="${img.url}" alt="img.id:${img.id}" id="${img.id}" onclick="onSelectImg(this)">`)
+    const addImgStr = `<div class="upload-img">+</div>`
+    elGal.innerHTML = addImgStr + strHtml.join('')
 
 }
 
-//--------------------------------------------------IMAGE EDITOR----------------------------------------------------------/
-function renderEditor() {
-console.log('render editor')
-}
+function renderEditor(imgId) {
+    console.log('render editor')
 
-function resizeCanvas() {
+    let elEditor = document.querySelector('.meme-editor')
+    elEditor.classList.add('open')
+
+    // resizeCanvas()
+    // window.addEventListener('resize', resizeCanvas)
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.offsetWidth
     gElCanvas.height = elContainer.offsetHeight
-}
-function drawImg(src) {
-    const img = new Image() // Create a new html img element
-    img.src = src // Send a network req to get that image, define the img src
-    // When the image ready draw it on the canvas
-    img.onload = () => {
-        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-    }
+
+    drawImg(imgId)
 }
 
 //------------------------------------------------------------------------------------------------------------/
@@ -83,10 +85,15 @@ function renderAbout() {
     console.log('render about')
     // class: modal
 }
-
+//----------------------------------------------------OnClicks------------------------------------------------------------/
 function onSelectMenuItem(elMenuItem) {
     // console.log('open', elMenuItem)
     selectItem(elMenuItem)
 }
 
-
+function onSelectImg(elImg) {
+    setQueryParams({ gallery: 'editor' })
+    document.querySelector('.image-gallery').classList.remove('open')
+    let imgId = elImg.id
+    renderEditor(imgId)
+}

@@ -1,27 +1,21 @@
 body {
     margin: 0;
-    flex-direction: column;
+    /* flex-direction: column; */
+}
+
+.image-gallery {
+    display: grid;
+    gap: 0.5em;
+    grid-template-columns: repeat(auto-fit, 200px);
+    grid-auto-flow: dense;
 }
 
 .meme-editor {
     grid-template-columns: repeat(2, minmax(300px, 450px));
+    grid-template-rows: minmax(300px, 450px);
     gap: 2rem;
-
-    margin-inline: auto;
-    padding: 0.5rem;
-    width: fit-content;
-    background-color: blue;
-
-    opacity: 0;
-    pointer-events: none;
 }
 
-.tool-box{ 
-    background-color: red;
-}
-
-.image-gallery {
-    background-color: rgb(232, 232, 232);
+.tool-box {
     display: grid;
-    opacity: 1;
 }

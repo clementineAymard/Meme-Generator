@@ -20,7 +20,7 @@ const STORAGE_KEY_MENU = 'menuItemDB'
 // }
 
 function selectItem(elMenuItem) {
-    // console.log('hi')
+    // console.log('f selectItem')
     elMenuItem.classList.add('open')
     const menuItem = elMenuItem.classList[0]
     setQueryParams({ menu: menuItem })
@@ -28,6 +28,7 @@ function selectItem(elMenuItem) {
     saveToStorage(STORAGE_KEY_MENU, menuItem)
 
     unSelectRest(menuItem)
+    render(menuItem)
 }
 
 function unSelectRest(menuItem) {
@@ -37,3 +38,5 @@ function unSelectRest(menuItem) {
     items.forEach(item => document.querySelector(`.${item}`).classList.remove('open'))
     // console.log(items)
 }
+
+

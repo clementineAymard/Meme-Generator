@@ -1,5 +1,6 @@
 'use strict'
 
+// localStorage.clear()
 const STORAGE_KEY_MM = 'memesDB'
 const STORAGE_KEY_IMG = 'imagesDB'
 
@@ -22,4 +23,31 @@ var gMeme = {
 }
 
 
-function create
+function getImgs() {
+    return gImgs
+}
+
+function getImgById(imgId) {
+    let imgs = getImgs()
+    let image = imgs.find(img => `${img.id}` === `${imgId}`)
+    return image
+}
+
+function getMeme() {
+    return gMeme
+}
+
+function createMeme(imgId) {
+    gMeme = {
+        selectedImgId: imgId,
+        selectedLineIdx: 0,
+        lines: [{
+            txt: '',
+            size: 20,
+            align: 'left',
+            color: 'black'
+        }]
+    }
+    return gMeme
+}
+

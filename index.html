@@ -8,7 +8,7 @@
     <title>Meme Generator</title>
 </head>
 
-<body onload="onInit()" class="flex"> <!-- class="grid" -->
+<body onload="onInit()" class="grid">
     <header class="flex align-center space-between">
         <div class="logo">meme-gen</div>
         <nav>
@@ -19,27 +19,28 @@
             </ul>
         </nav>
     </header>
-
+<div class="main-section">
     <section class="image-gallery"></section>
 
     <main class="meme-editor grid">
         <div class="canvas-container">
             <canvas></canvas>
         </div>
-        <div class="tool-box">Tools</div>
+        <div class="tool-box">tool-box
+            
+        </div>
     </main>
 
     <section class="memes-gallery"></section>
 
     <div class="modal"></div>
-
+</div>
     <footer>Cozyrights © Clementine Aymard </footer>
 
     <script src="/js/service/util.service.js"></script>
     <script src="/js/service/memes.service.js"></script>
-    <script src="/js/service/gallery.service.js"></script>
-    <script src="/js/service/main.service.js"></script>
     <script src="/js/service/nav.service.js"></script>
+    <script src="/js/meme.controller.js"></script>
     <script src="/js/main.controller.js"></script>
 </body>
 </html>

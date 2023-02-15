@@ -1,8 +1,11 @@
+*{
+    box-sizing: border-box;
+}
 html {
     font-family: varela;
 }
 
-image {
+img {
     width:100%;
     object-fit: cover;
 }
