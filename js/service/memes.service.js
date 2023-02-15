@@ -2,8 +2,9 @@
 
 // localStorage.clear()
 const STORAGE_KEY_MM = 'memesDB'
-const STORAGE_KEY_IMG = 'imagesDB'
-
+// const STORAGE_KEY_IMG = 'imagesDB'
+var gMemes = []
+var gCurrMeme
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 var gImgs = [{ id: 1, url: '/images/1.jpg', keywords: ['funny', 'cat'] },
@@ -21,7 +22,13 @@ var gMeme = {
         }
     ]
 }
+function getMeme(){
+    return gMeme
+}
 
+renderMemes(){
+    // renders meme to editor with all infos in meme
+}
 
 function getImgs() {
     return gImgs
@@ -33,12 +40,12 @@ function getImgById(imgId) {
     return image
 }
 
-function getMeme() {
-    return gMeme
+function getCurrMeme() {
+    return gCurrMeme
 }
 
 function createMeme(imgId) {
-    gMeme = {
+    let meme = {
         selectedImgId: imgId,
         selectedLineIdx: 0,
         lines: [{
@@ -48,6 +55,9 @@ function createMeme(imgId) {
             color: 'black'
         }]
     }
-    return gMeme
+    gCurrMeme = meme
 }
 
+function saveMeme(){
+    gMemes.push(gCurrMeme)   
+}   

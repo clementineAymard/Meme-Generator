@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,22 +20,30 @@
             </ul>
         </nav>
     </header>
-<div class="main-section">
-    <section class="image-gallery"></section>
+    <div class="main-section">
+        <section class="image-gallery"></section>
 
-    <main class="meme-editor grid">
-        <div class="canvas-container">
-            <canvas></canvas>
-        </div>
-        <div class="tool-box">tool-box
-            
-        </div>
-    </main>
+        <main class="meme-editor grid">
+            <div class="canvas-container">
+                <canvas></canvas>
+            </div>
+            <div class="tool-box">tool-box
+                
+                <button class="btn-save">
+                    <a href="#" onclick="downloadCanvas(this)" download="file-name">SAVE</a>
+                </button>
+                <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
 
-    <section class="memes-gallery"></section>
+                <button class="btn" onclick="onUploadImg()">
+                  Upload Image from Canvas
+                </button>
+            </div>
+        </main>
 
-    <div class="modal"></div>
-</div>
+        <section class="memes-gallery"></section>
+
+        <div class="modal"></div>
+    </div>
     <footer>Cozyrights © Clementine Aymard </footer>
 
     <script src="/js/service/util.service.js"></script>
@@ -43,4 +52,5 @@
     <script src="/js/meme.controller.js"></script>
     <script src="/js/main.controller.js"></script>
 </body>
+
 </html>
