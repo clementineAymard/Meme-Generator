@@ -15,3 +15,7 @@
 .tool-box input[type="color"] {
     margin-block: auto;
 }
+
+.tool-box .btn-save {
+    padding: 0
+}

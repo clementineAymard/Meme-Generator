@@ -33,11 +33,13 @@ var gMeme = {
     lines: [
         {
             txt: 'I sometimes eat Falafel',
-            size: 20,
-            align: 'left',
+            size: 30,
+            align: 'center',
             color: 'red',
             font_family: 'Impact',
             stroke_color: 'black',
+            style: '',
+            weight: '',
         }
     ]
 }
@@ -61,40 +63,62 @@ function getImgById(imgId) {
     return image
 }
 
-function getCurrMeme() {
-    if (loadFromStorage(STORAGE_KEY_CUR_MM)) return loadFromStorage(STORAGE_KEY_CUR_MM)
-    else console.log('no current meme')
-}
-
-function setCurrMeme(meme) {
-    gCurrMeme = meme
-    saveCurrMeme()
-}
-
-function saveCurrMeme() { // on every change
-    saveToStorage(STORAGE_KEY_CUR_MM, gCurrMeme)
-}
-
 function createMeme(imgId) {
     let meme = {
         selectedImgId: imgId,
         selectedLineIdx: 0,
         lines: [
             {
-                txt: 'Type',
-                size: 20,
+                txt: 'Your Text Here',
+                size: 30,
                 font_family: 'Impact',
-                align: 'left',
+                align: 'center',
+                weight: 'normal',
+                style: 'normal',
                 color: 'black',
                 stroke_color: 'black',
+                pos: {x:0,y:0}
             }
         ]
     }
+    // console.log(meme)
     setCurrMeme(meme)
-    // gCurrMeme = meme
 }
 
-function saveMeme() { // from onSaveMeme at onclick button 
+function createLine() {
+    return {
+        txt: 'Your Text Here',
+        size: 30,
+        font_family: 'Impact',
+        align: 'center',
+        weight: 'normal',
+        style: 'normal',
+        color: 'black',
+        stroke_color: 'black',
+        pos: {x:0,y:0}
+    }
+}
+
+function setCurrMeme(meme) {
+    gCurrMeme = meme
+    console.log('setting gCurrMeme:', gCurrMeme)
+    saveCurrMeme()
+}
+
+function saveCurrMeme() { // on every change
+    saveToStorage(STORAGE_KEY_CUR_MM, gCurrMeme)
+    console.log('SAVED TO STORAGE:', gCurrMeme)
+}
+
+function getCurrMeme() {
+    if (!loadFromStorage(STORAGE_KEY_CUR_MM)) {
+        console.log('no current meme')
+        return
+    }
+    return loadFromStorage(STORAGE_KEY_CUR_MM)
+}
+
+function saveMeme() { // SAVE TO MEMES -from onSaveMeme at onclick button 
     let isSaved = gMemes.find((meme) => meme === gCurrMeme) //prevent duplicates
     if (!isSaved) {
         gMemes.push(gCurrMeme)

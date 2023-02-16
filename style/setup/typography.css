@@ -19,7 +19,7 @@
 }
 
 .fab.facebook::before {
-content: "\f39e";
+    content: "\f39e";
 }
 
 /***********************************************************************************/
@@ -29,40 +29,18 @@ content: "\f39e";
     src: url("/fonts/fontAwesome/fa-regular-400.ttf");
 }
 
-.far::before{
+.far::before {
     font-family: far;
 }
 
-.far.font-size::before{
-    content: '\f894';
-}
 
-.far.font-family::before{
-    content: '\f031';
-}
 
-.far.italic::before{
-    content: '\f033';
-}
 
-.far.underline::before{
+.far.underline::before {
     content: '\f0cd';
 }
 
-.far.bold::before{
-    content: '\f032';
-}
-
-.far.align-right::before{
-    content: '\f038';
-}
-.far.align-left::before{
-    content: '\f036';
-}
-.far.align-center::before{
-    content: '\f037';
-}
-.far.share::before{
+.far.share::before {
     content: '\f14d';
 }
 
@@ -77,9 +55,34 @@ content: "\f39e";
     font-family: fas;
 }
 
-.fas.arrows4::before{
+.fas.italic::before {
+    content: '\f033';
+}
+
+.fas.bold::before {
+    content: '\f032';
+}
+
+.fas.arrows4::before {
     content: '\f0b2';
 }
-.fas.save::before{
+
+.fas.save::before {
     content: '\f019';
+}
+
+.fas.align-right::before {
+    content: '\f038';
+}
+
+.fas.align-left::before {
+    content: '\f036';
+}
+
+.fas.align-center::before {
+    content: '\f037';
+}
+
+.fas.arrow::before {
+    content: '\f07d';
 }

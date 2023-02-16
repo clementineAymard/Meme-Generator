@@ -10,6 +10,7 @@ function selectItem(elMenuItem) {
     console.log(menuItem)
     document.querySelector(`.main-section .${menuItem}`).classList.add('open') // MAIN SECTIONS
     setQueryParams({ menu: menuItem })
+    if (menuItem !== 'meme-editor') deleteQueryParam('editingImageId')
 
     saveToStorage(STORAGE_KEY_MENU, menuItem)
 

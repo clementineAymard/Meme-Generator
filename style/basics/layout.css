@@ -3,12 +3,17 @@ body {
     /* flex-direction: column; */
 }
 
-.main-section .image-gallery,
-.main-section .meme-editor {
+.main-section .image-gallery {
     display: grid;
     gap: 0.5em;
     grid-template-columns: repeat(auto-fit, 200px);
     grid-auto-flow: dense;
+}
+
+.main-section .meme-editor {
+    grid-template-columns: repeat(2, minmax(300px, 450px));
+    grid-template-rows: minmax(300px, 450px);
+    gap: 2rem;
 }
 
 .tool-box {
@@ -41,9 +46,6 @@ body {
     grid-column: 4 / 7;
 }
 
-.tool-box .btn-save {
-    grid-column: 1 / 2;
-}
 
 .main-section .memes-gallery {
     display: grid;

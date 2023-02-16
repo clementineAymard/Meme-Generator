@@ -50,6 +50,9 @@
                     <option value="'Times New Roman'" style="font-family: Times New Roman;">Times New Roman</option>
                     <option value="'meow'" style="font-family: meow;">Meow Script</option>
                 </select>
+                <button class="btn-add-line" onclick="onAddLine()" title="Click to add a line of Text">Add Line</button>
+                <button class="btn-select-next-line" onclick="onNextLine()" title="Click to select next line (first is top, second is bottom, third is center)"><span class="fas arrow"></span></button>
+                <button class="btn-save" onclick="onSaveMeme()" title="Save to Memes">SAVE</button>
 
                 <label class="txt-fill-clr" for="fill-clr">Text Color :
                 </label>
@@ -57,15 +60,14 @@
                 <label class="txt-border-clr" for="border-clr">Text Border Color :
                 </label>
                     <input type="color"  id="border-clr" oninput="onAddText('stroke_color', this.value)">
-                <!-- <button class="btn-i" onclick="" title="Font Italic"><span class="far italic"></span></button>
-                <button class="btn-b" onclick="" title="Font Bold"><span class="far bold"></span></button>
-                <button class="btn-u" onclick="" title="Font Underline"><span class="far underline"></span></button>
-                
-                <button class="btn-a-l" onclick="" title="Align to Left"><span class="far align-left"></span></button>
-                <button class="btn-a-c" onclick="" title="Align to Center"><span class="far align-center"></span></button>
-                <button class="btn-a-r" onclick="" title="Align to Right"><span class="far align-right"></span></button> -->
 
-                <button class="btn-save" onclick="onSaveMeme()">SAVE TO MEMES</button>
+                <!-- <button class="btn-i" value="italic" onclick="onAddText('style', this.value)" title="Font Italic"><span class="fas italic"></span></button> -->
+                <button class="btn-b" value="bold" onclick="onAddText('weight', this.value)" title="Font Bold"><span class="fas bold"></span></button>
+                
+                <button class="btn-a-l" value="end" onclick="onAddText('align', this.value)" title="Align to Left"><span class="fas align-left"></span></button>
+                <button class="btn-a-c" value="center" onclick="onAddText('align', this.value)" title="Align to Center"><span class="fas align-center"></span></button>
+                <button class="btn-a-r" value="start" onclick="onAddText('align', this.value)" title="Align to Right"><span class="fas align-right"></span></button>
+
             </div>
         </main>
 

@@ -1,13 +1,13 @@
 'use strict'
 let gElCanvas
 let gCtx
-let gPos = { x: 50, y: 50 }
+let gPos = [{ x: 225, y: 50 }, { x: 225, y: 400 }, { x: 225, y: 225 }]
 
 function renderEditor() {
     console.log('render editor')
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
-
+    gCtx.beginPath()
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.offsetWidth
     gElCanvas.height = elContainer.offsetHeight
@@ -23,12 +23,17 @@ function startMeme() {
 function renderMeme(imgId) {
     drawImg(imgId)
     const currMeme = getCurrMeme()
-    const lineIdx = currMeme.selectedLineIdx
-    console.log('line:', currMeme.lines[lineIdx]);
-    setTimeout(() => {
-        drawText(currMeme.lines[lineIdx])
-    }, 1);
-    saveCurrMeme()
+    const { lines, selectedLineIdx } = currMeme
+
+    lines.forEach((line, idx) => {
+        setTimeout(() => {
+        drawText(line, idx)
+    }, 1)
+    })
+    // const line = lines[selectedLineIdx]
+    console.log('curr:', currMeme)
+    
+    // setCurrMeme(currMeme)
 }
 
 function onAddText(key, val) {
@@ -36,15 +41,12 @@ function onAddText(key, val) {
     const currMeme = getCurrMeme()
     const lineIdx = currMeme.selectedLineIdx
     if (key === 'size') currMeme.lines[lineIdx][key] += val
-    else currMeme.lines[lineIdx][key] = val
+    else if (key === 'weight') { // || key === 'style'
+        if (currMeme.lines[lineIdx][key] === 'normal') { currMeme.lines[lineIdx][key] = val }
+        else currMeme.lines[lineIdx][key] = 'normal'
+    } else currMeme.lines[lineIdx][key] = val
     setCurrMeme(currMeme)
     console.log(key, currMeme.lines[lineIdx][key], val)
-    // const { txt, size, align, color, font_family, stroke_color } = currMeme.lines[lineIdx]
-    // drawImg(imgId)
-    // setTimeout(() => {
-    //     drawText(currMeme.lines[lineIdx])
-    // }, 1);
-    // saveCurrMeme()
     renderMeme(imgId)
 }
 
@@ -60,19 +62,37 @@ function drawImg(id) {
     }
 }
 
-function drawText({ txt, size, align, color, font_family, stroke_color }) {
-    const { x, y } = gPos
+function drawText({ txt, size, align, color, font_family, stroke_color, weight }, lineIdx) {
+    const { x, y } = gPos[lineIdx]
     gCtx.lineWidth = 1
     gCtx.strokeStyle = stroke_color
     gCtx.fillStyle = color
-    gCtx.font = `${size}px ${font_family}`
+    gCtx.font = `${weight} ${size}px ${font_family}` // ${style}
     gCtx.textAlign = align
-    console.log('DRAW', txt);
+    gCtx.textBaseline = 'middle'
+    console.log('DRAW:', txt);
     // console.log('drawing:', text, x, y)
     gCtx.fillText(txt, x, y) // Draws (fills) a given text at the given (x, y) position.
     gCtx.strokeText(txt, x, y) // Draws (strokes) a given text at the given (x, y) position.
 
 }
+
+function onAddLine() {
+    let currMeme = getCurrMeme()
+    if (currMeme.lines.length === 3 ) return
+    currMeme.lines.push(createLine())
+    currMeme.selectedLineIdx = currMeme.lines.length - 1
+    console.log('added line, currMeme:', currMeme)
+    const imgId = getValFromParam('editingImageId')
+    setCurrMeme(currMeme)
+    renderMeme(imgId)
+}
+
+function onNextLine(){
+    console.log('on next line')
+
+}
+
 // download to computer
 function downloadCanvas(elLink) {
     const data = gElCanvas.toDataURL()

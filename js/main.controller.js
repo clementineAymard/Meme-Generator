@@ -10,6 +10,8 @@ function onInit() {
     }
     selectItem(document.querySelector(`.${menuItem}`)) 
     render(menuItem)
+    // let isEditing = getValFromParam('editingImageId')
+    // if (isEditing) renderMeme(isEditing)
 }
 
 function render(menuItem) {
@@ -26,13 +28,7 @@ function render(menuItem) {
     }
 }
 
-//--------------------------------------------------GALLERY----------------------------------------------------------/
-// function renderGallery() {
-//     console.log('render gallery')
-//     const editorStatus = getValFromParam('gallery')
-//     if (editorStatus === 'images') renderImages()
-// }
-
+//--------------------------------------------------IMAGES----------------------------------------------------------/
 function renderGallery() {
     console.log('render images')
     document.querySelector('.meme-editor').classList.remove('open')
@@ -47,22 +43,23 @@ function renderGallery() {
     elGal.innerHTML = addImgStr + strHtml.join('')
 }
 
-//------------------------------------------------------------------------------------------------------------/
+//----------------------------------------------------MEMES--------------------------------------------------------/
 function renderMemes() {
     console.log('render memes')
     // class: memes-gallery
     const memes = getMemes()
     let elMemes = document.querySelector('.main-section .memes-gallery')
     // let linesStr = meme.lines.map((line)=>`<p>${line.txt}</p>`).join(',')
-
+    
     let strHtml = memes.map((meme, idx) => `<div class="saved-meme-${idx}"> 
     <img src="${getImgById(meme.selectedImgId).url}" onclick="onSelectMeme(${idx})">
-        ${meme.lines.map((line) => `<p>${line.txt}</p>`).join(',')}
+    ${meme.lines.map((line) => `<p>${line.txt}</p>`).join(',')}
     </div>`)
-
+    
     elMemes.innerHTML = strHtml.join('')
 }
 
+//---------------------------------------------TODO: ABOUT MODAL--------------------------------------------------------/
 function renderAbout() {
     console.log('render about')
     // class: about
@@ -96,6 +93,7 @@ function onSelectMeme(memeIdx) {
     renderMeme(meme.selectedImgId)
 }
 
+//----------------------------------------------------TODO------------------------------------------------------------/
 // upload image
 function onImgInput(ev) {
     console.log(ev)
@@ -120,3 +118,4 @@ function renderImg(img) {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 }
 
+// FILTER
