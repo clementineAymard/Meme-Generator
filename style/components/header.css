@@ -16,7 +16,7 @@ nav li {
     transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
-nav li.open {
+nav li.selected {
     box-shadow: inset 0px -4px grey;
 }
 
@@ -26,4 +26,8 @@ ul li:last-child{
 
 nav li:hover {
     background-color: grey;
+}
+
+nav li.meme-editor {
+    pointer-events: none;
 }

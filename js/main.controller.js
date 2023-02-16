@@ -6,23 +6,18 @@ function onInit() {
     // set active section to render  
     let menuItem = getValFromParam('menu')
     if (!menuItem) {
-        menuItem = 'gallery'
-        setQueryParams({ gallery: 'images' })
+        menuItem = 'image-gallery'
     }
-    selectItem(document.querySelector(`.${menuItem}`))
-
+    selectItem(document.querySelector(`.${menuItem}`)) 
     render(menuItem)
-
-    const editorStat = getValFromParam('editingImageId')
-    if (editorStat) renderEditor()
 }
 
 function render(menuItem) {
     switch (menuItem) {
-        case 'gallery':
+        case 'image-gallery':
             renderGallery()
             break;
-        case 'memes':
+        case 'memes-gallery':
             renderMemes()
             break;
         case 'about':
@@ -32,25 +27,23 @@ function render(menuItem) {
 }
 
 //--------------------------------------------------GALLERY----------------------------------------------------------/
-function renderGallery() {
-    console.log('render gallery')
-    const editorStatus = getValFromParam('gallery')
-    if (editorStatus === 'images') renderImages()
-}
+// function renderGallery() {
+//     console.log('render gallery')
+//     const editorStatus = getValFromParam('gallery')
+//     if (editorStatus === 'images') renderImages()
+// }
 
-function renderImages() {
+function renderGallery() {
     console.log('render images')
     document.querySelector('.meme-editor').classList.remove('open')
-    let elGal = document.querySelector('.image-gallery')
-    elGal.classList.add('open')
 
     const imgs = getImgs()
-    // debugger
     const addImgStr = `<div><label class="upload-img" for="file-input">Add image</label>
     <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" id="file-input"/></div>`
 
     let strHtml = imgs.map((img) => `<img src="${img.url}" alt="img.id:${img.id}" id="${img.id}" onclick="onSelectImg(this)">`)
-    
+
+    let elGal = document.querySelector('.main-section .image-gallery')
     elGal.innerHTML = addImgStr + strHtml.join('')
 }
 
@@ -59,38 +52,48 @@ function renderMemes() {
     console.log('render memes')
     // class: memes-gallery
     const memes = getMemes()
-    let elMemes = document.querySelector('.memes-gallery')
+    let elMemes = document.querySelector('.main-section .memes-gallery')
+    // let linesStr = meme.lines.map((line)=>`<p>${line.txt}</p>`).join(',')
 
-    let strHtml = imgs.map((img) => `<img src="${img.url}" alt="img.id:${img.id}" id="${img.id}" onclick="onSelectImg(this)">`)
-    
-    elMemes.innerHTML = addImgStr + strHtml.join('')
+    let strHtml = memes.map((meme, idx) => `<div class="saved-meme-${idx}"> 
+    <img src="${getImgById(meme.selectedImgId).url}" onclick="onSelectMeme(${idx})">
+        ${meme.lines.map((line) => `<p>${line.txt}</p>`).join(',')}
+    </div>`)
+
+    elMemes.innerHTML = strHtml.join('')
 }
 
 function renderAbout() {
     console.log('render about')
-    // class: modal
+    // class: about
 }
 //----------------------------------------------------OnClicks------------------------------------------------------------/
 function onSelectMenuItem(elMenuItem) {
-    // console.log('open', elMenuItem)
     selectItem(elMenuItem)
 }
 
 function onSelectImg(elImg) {
-    console.log('selected: ', elImg);
-    deleteQueryParam('gallery')
-    document.querySelector('.image-gallery').classList.remove('open')
+    selectItem(document.querySelector('.meme-editor'))
 
     let imgId = elImg.id
     setQueryParams({ editingImageId: imgId })
-    renderEditor(imgId)
+    renderEditor()
+    startMeme()
 }
 
 function onBackToGallery() {
-    document.querySelector('.image-gallery').classList.add('open')
-    setQueryParams({ gallery: 'images' })
-    document.querySelector('.meme-editor').classList.remove('open')
-    deleteQueryParam('editingImageId')
+    let elMenuItem = document.querySelector('.main-section .image-gallery')
+    selectItem(elMenuItem)
+}
+
+function onSelectMeme(memeIdx) {
+    let memes = getMemes()
+    let meme = memes[memeIdx]
+    setQueryParams({ editingImageId: meme.selectedImgId })
+    document.querySelector('.main-section .memes-gallery').classList.remove('open')
+    renderEditor()
+    setCurrMeme(meme)
+    renderMeme(meme.selectedImgId)
 }
 
 // upload image
@@ -116,3 +119,4 @@ function renderImg(img) {
     // Draw the img on the canvas
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 }
+

@@ -1,13 +1,17 @@
-.tool-box{
+.tool-box {
     background-color: lightsteelblue;
-    padding:1rem;
+    padding: 1rem;
 }
 
 .tool-box button {
     cursor: pointer;
 }
+
 .btn-download a {
     text-decoration: none;
     color: inherit;
 }
 
+.tool-box input[type="color"] {
+    margin-block: auto;
+}

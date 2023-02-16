@@ -3,17 +3,12 @@ body {
     /* flex-direction: column; */
 }
 
-.image-gallery {
+.main-section .image-gallery,
+.main-section .meme-editor {
     display: grid;
     gap: 0.5em;
     grid-template-columns: repeat(auto-fit, 200px);
     grid-auto-flow: dense;
-}
-
-.meme-editor {
-    grid-template-columns: repeat(2, minmax(300px, 450px));
-    grid-template-rows: minmax(300px, 450px);
-    gap: 2rem;
 }
 
 .tool-box {
@@ -45,10 +40,14 @@ body {
 .txt-border-clr {
     grid-column: 4 / 7;
 }
-.tool-box input[type="color"]{
-    margin-block: auto;
-}
 
 .tool-box .btn-save {
     grid-column: 1 / 2;
+}
+
+.main-section .memes-gallery {
+    display: grid;
+    gap: 0.5em;
+    grid-template-columns: repeat(auto-fit, 200px);
+    grid-auto-flow: dense;
 }

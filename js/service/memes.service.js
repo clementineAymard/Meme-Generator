@@ -1,8 +1,9 @@
 'use strict'
 
 // localStorage.clear()
-const STORAGE_KEY_MM = 'memesDB'
-// const STORAGE_KEY_IMG = 'imagesDB'
+const STORAGE_KEY_MEMES = 'memesDB'
+const STORAGE_KEY_CUR_MM = 'currMeme'
+
 var gMemes = []
 var gCurrMeme
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
@@ -34,20 +35,15 @@ var gMeme = {
             txt: 'I sometimes eat Falafel',
             size: 20,
             align: 'left',
-            color: 'red'
+            color: 'red',
+            font_family: 'Impact',
+            stroke_color: 'black',
         }
     ]
 }
-function getMeme() {
-    return gMeme
-}
 
-function renderMeme() {
-    // renders specific meme to editor with all infos in meme
-}
-
-function getMemes(){ // saved and stored memes
-    let memes = loadFromStorage(STORAGE_KEY_MM)
+function getMemes() { // saved and stored memes
+    let memes = loadFromStorage(STORAGE_KEY_MEMES)
     if (!memes) {
         gMemes = [gMeme]
         return gMemes
@@ -66,18 +62,26 @@ function getImgById(imgId) {
 }
 
 function getCurrMeme() {
-    return gCurrMeme
+    if (loadFromStorage(STORAGE_KEY_CUR_MM)) return loadFromStorage(STORAGE_KEY_CUR_MM)
+    else console.log('no current meme')
 }
+
 function setCurrMeme(meme) {
     gCurrMeme = meme
+    saveCurrMeme()
 }
+
+function saveCurrMeme() { // on every change
+    saveToStorage(STORAGE_KEY_CUR_MM, gCurrMeme)
+}
+
 function createMeme(imgId) {
     let meme = {
         selectedImgId: imgId,
         selectedLineIdx: 0,
         lines: [
             {
-                txt: '',
+                txt: 'Type',
                 size: 20,
                 font_family: 'Impact',
                 align: 'left',
@@ -86,12 +90,18 @@ function createMeme(imgId) {
             }
         ]
     }
-    gCurrMeme = meme
+    setCurrMeme(meme)
+    // gCurrMeme = meme
 }
 
-function saveMeme() {
-    gMemes.push(gCurrMeme)
-    saveToLocalStorage(STORAGE_KEY_MM, gMemes)
+function saveMeme() { // from onSaveMeme at onclick button 
+    let isSaved = gMemes.find((meme) => meme === gCurrMeme) //prevent duplicates
+    if (!isSaved) {
+        gMemes.push(gCurrMeme)
+        saveToStorage(STORAGE_KEY_MEMES, gMemes)
+        alert('Meme Saved')
+    }
+    // localStorage.removeItem(STORAGE_KEY_CUR_MM)
 }
 
 function getCurrLine() {

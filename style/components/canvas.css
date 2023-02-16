@@ -1,4 +1,4 @@
-.meme-editor {
+.main-section .meme-editor {
     margin-inline: auto;
     padding: 0.5rem;
     width: max-content;
@@ -13,7 +13,7 @@
     margin-top: 1.5rem;
 }
 
-.back-btn {
+.main-section .back-btn {
     position: absolute;
     top: -2rem;
     cursor: pointer;
@@ -22,12 +22,12 @@
     border-radius: 14px;
 }
 
-.back-btn:hover {
+.main-section .back-btn:hover {
     text-decoration: underline;
     font-weight: bold;
 }
 
-.meme-editor.open {
+.main-section .meme-editor.open {
     opacity: 1;
     pointer-events: all;
     translate: -50% 0;
@@ -41,6 +41,6 @@
 /* canvas {
 } */
 
-.meme-editor image {
+.main-section .meme-editor image {
     aspect-ratio: 1 / 1;
 }

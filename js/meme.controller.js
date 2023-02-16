@@ -1,29 +1,51 @@
 'use strict'
 let gElCanvas
 let gCtx
-let gPos
+let gPos = { x: 50, y: 50 }
 
 function renderEditor() {
     console.log('render editor')
-
-    let elEditor = document.querySelector('.meme-editor')
-    elEditor.classList.add('open')
-
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
 
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.offsetWidth
     gElCanvas.height = elContainer.offsetHeight
-
-    startMeme()
-    gPos = { x: 50, y: 50 }
 }
 
 function startMeme() {
+    console.log('start meme')
     const imgId = getValFromParam('editingImageId')
     createMeme(imgId)
+    renderMeme(imgId)
+}
+
+function renderMeme(imgId) {
     drawImg(imgId)
+    const currMeme = getCurrMeme()
+    const lineIdx = currMeme.selectedLineIdx
+    console.log('line:', currMeme.lines[lineIdx]);
+    setTimeout(() => {
+        drawText(currMeme.lines[lineIdx])
+    }, 1);
+    saveCurrMeme()
+}
+
+function onAddText(key, val) {
+    const imgId = getValFromParam('editingImageId')
+    const currMeme = getCurrMeme()
+    const lineIdx = currMeme.selectedLineIdx
+    if (key === 'size') currMeme.lines[lineIdx][key] += val
+    else currMeme.lines[lineIdx][key] = val
+    setCurrMeme(currMeme)
+    console.log(key, currMeme.lines[lineIdx][key], val)
+    // const { txt, size, align, color, font_family, stroke_color } = currMeme.lines[lineIdx]
+    // drawImg(imgId)
+    // setTimeout(() => {
+    //     drawText(currMeme.lines[lineIdx])
+    // }, 1);
+    // saveCurrMeme()
+    renderMeme(imgId)
 }
 
 function drawImg(id) {
@@ -38,35 +60,17 @@ function drawImg(id) {
     }
 }
 
-function onAddText(key, val) {
-    console.log('key, val', key, val)
-
-    const imgId = getValFromParam('editingImageId')
-    const currMeme = getCurrMeme()
-    const lineIdx = currMeme.selectedLineIdx
-    if (key === 'size') currMeme.lines[lineIdx][key] += val
-    else currMeme.lines[lineIdx][key] = val
-
-    const { txt, size, align, color, font_family, stroke_color } = currMeme.lines[lineIdx]
-
-    drawImg(imgId)
-    setTimeout(() => {
-        drawText(txt, size, align, color, font_family, stroke_color)
-    }, 1);
-
-}
-
-function drawText(text, size, align, color, font_family, stroke_color) {
+function drawText({ txt, size, align, color, font_family, stroke_color }) {
     const { x, y } = gPos
     gCtx.lineWidth = 1
     gCtx.strokeStyle = stroke_color
     gCtx.fillStyle = color
     gCtx.font = `${size}px ${font_family}`
     gCtx.textAlign = align
-
+    console.log('DRAW', txt);
     // console.log('drawing:', text, x, y)
-    gCtx.fillText(text, x, y) // Draws (fills) a given text at the given (x, y) position.
-    gCtx.strokeText(text, x, y) // Draws (strokes) a given text at the given (x, y) position.
+    gCtx.fillText(txt, x, y) // Draws (fills) a given text at the given (x, y) position.
+    gCtx.strokeText(txt, x, y) // Draws (strokes) a given text at the given (x, y) position.
 
 }
 // download to computer
@@ -121,6 +125,6 @@ function doUploadImg(imgDataUrl, onSuccess) {
 }
 
 //save to memes and local strorage db
-function onSaveMeme(){
+function onSaveMeme() {
     saveMeme()
 }
