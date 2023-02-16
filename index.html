@@ -30,7 +30,7 @@
                 <canvas></canvas>
             </div>
             <div class="tool-box">
-                <input type="text" class="text-line" oninput="onAddText('txt', this.value)" placeholder="Type your text here">
+                <input type="text" class="text-line" oninput="onEditLine('txt', this.value)" placeholder="Type your text here">
                 
                 <button class="btn-download">
                     <a href="#" onclick="downloadCanvas(this)" download="file-name" title="Save and Download Meme"
@@ -41,10 +41,10 @@
                     <span class="far share"></span>
                 </button>
 
-                <button class="decrease-f-s" onclick="onAddText('size', -1)" title="Decrease Font-Size">A-</button>
-                <button class="increase-f-s" onclick="onAddText('size', 1)" title="Increase Font-Size">A+</button>
+                <button class="decrease-f-s" onclick="onEditLine('size', -1)" title="Decrease Font-Size">A-</button>
+                <button class="increase-f-s" onclick="onEditLine('size', 1)" title="Increase Font-Size">A+</button>
 
-                <select class="select-f-f" onchange="onAddText('font_family', this.value)" title="Change Font-Family" value="Impact">
+                <select class="select-f-f" onchange="onEditLine('font_family', this.value)" title="Change Font-Family" value="Impact">
                     <option value="'Impact'" selected style="font-family: Impact;">Impact</option>
                     <option value="'Arial'" style="font-family: Arial;">Arial</option>
                     <option value="'Times New Roman'" style="font-family: Times New Roman;">Times New Roman</option>
@@ -56,17 +56,17 @@
 
                 <label class="txt-fill-clr" for="fill-clr">Text Color :
                 </label>
-                    <input type="color"  id="fill-clr" oninput="onAddText('color', this.value)">
+                    <input type="color"  id="fill-clr" oninput="onEditLine('color', this.value)">
                 <label class="txt-border-clr" for="border-clr">Text Border Color :
                 </label>
-                    <input type="color"  id="border-clr" oninput="onAddText('stroke_color', this.value)">
+                    <input type="color"  id="border-clr" oninput="onEditLine('stroke_color', this.value)">
 
-                <!-- <button class="btn-i" value="italic" onclick="onAddText('style', this.value)" title="Font Italic"><span class="fas italic"></span></button> -->
-                <button class="btn-b" value="bold" onclick="onAddText('weight', this.value)" title="Font Bold"><span class="fas bold"></span></button>
+                <!-- <button class="btn-i" value="italic" onclick="onEditLine('style', this.value)" title="Font Italic"><span class="fas italic"></span></button> -->
+                <button class="btn-b" value="bold" onclick="onEditLine('weight', this.value)" title="Font Bold"><span class="fas bold"></span></button>
                 
-                <button class="btn-a-l" value="end" onclick="onAddText('align', this.value)" title="Align to Left"><span class="fas align-left"></span></button>
-                <button class="btn-a-c" value="center" onclick="onAddText('align', this.value)" title="Align to Center"><span class="fas align-center"></span></button>
-                <button class="btn-a-r" value="start" onclick="onAddText('align', this.value)" title="Align to Right"><span class="fas align-right"></span></button>
+                <button class="btn-a-l" value="end" onclick="onEditLine('align', this.value)" title="Align to Left"><span class="fas align-left"></span></button>
+                <button class="btn-a-c" value="center" onclick="onEditLine('align', this.value)" title="Align to Center"><span class="fas align-center"></span></button>
+                <button class="btn-a-r" value="start" onclick="onEditLine('align', this.value)" title="Align to Right"><span class="fas align-right"></span></button>
 
             </div>
         </main>

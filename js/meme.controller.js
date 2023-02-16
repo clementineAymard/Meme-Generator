@@ -27,16 +27,21 @@ function renderMeme(imgId) {
 
     lines.forEach((line, idx) => {
         setTimeout(() => {
-        drawText(line, idx)
-    }, 1)
+            if (idx !== selectedLineIdx) drawText(line, idx)
+        }, 1)
     })
+
+    let selectedLine = lines[selectedLineIdx]
+    setTimeout(() => {
+        drawText(selectedLine, selectedLineIdx)
+    }, 1)
     // const line = lines[selectedLineIdx]
     console.log('curr:', currMeme)
-    
+
     // setCurrMeme(currMeme)
 }
 
-function onAddText(key, val) {
+function onEditLine(key, val) {
     const imgId = getValFromParam('editingImageId')
     const currMeme = getCurrMeme()
     const lineIdx = currMeme.selectedLineIdx
@@ -78,19 +83,26 @@ function drawText({ txt, size, align, color, font_family, stroke_color, weight }
 }
 
 function onAddLine() {
+    document.querySelector('.text-line').value = ''
     let currMeme = getCurrMeme()
-    if (currMeme.lines.length === 3 ) return
+    if (currMeme.lines.length === 3) return
     currMeme.lines.push(createLine())
     currMeme.selectedLineIdx = currMeme.lines.length - 1
-    console.log('added line, currMeme:', currMeme)
     const imgId = getValFromParam('editingImageId')
     setCurrMeme(currMeme)
     renderMeme(imgId)
+
+    console.log('added line, currMeme:', currMeme)
 }
 
-function onNextLine(){
+function onNextLine() {
     console.log('on next line')
-
+    let { lines, selectedLineIdx, selectedImgId } = getCurrMeme()
+    if (selectedLineIdx === lines.length-1) selectedLineIdx = 0
+    else selectedLineIdx++
+    setCurrMeme({ lines, selectedLineIdx, selectedImgId })
+    console.log(getCurrMeme())
+    document.querySelector('.text-line').value = lines[selectedLineIdx].txt
 }
 
 // download to computer
