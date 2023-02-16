@@ -1,6 +1,4 @@
 'use strict'
-// let gElCanvas
-// let gCtx
 
 function onInit() {
     console.log('init')
@@ -14,6 +12,9 @@ function onInit() {
     selectItem(document.querySelector(`.${menuItem}`))
 
     render(menuItem)
+
+    const editorStat = getValFromParam('editingImageId')
+    if (editorStat) renderEditor()
 }
 
 function render(menuItem) {
@@ -42,19 +43,27 @@ function renderImages() {
     document.querySelector('.meme-editor').classList.remove('open')
     let elGal = document.querySelector('.image-gallery')
     elGal.classList.add('open')
+
     const imgs = getImgs()
     // debugger
-    let strHtml = imgs.map((img) => `<img src="${img.url}" alt="img.id:${img.id}" id="${img.id}" onclick="onSelectImg(this)">`)
-    const addImgStr = `<div class="upload-img">+</div>`
-    elGal.innerHTML = addImgStr + strHtml.join('')
+    const addImgStr = `<div><label class="upload-img" for="file-input">Add image</label>
+    <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" id="file-input"/></div>`
 
+    let strHtml = imgs.map((img) => `<img src="${img.url}" alt="img.id:${img.id}" id="${img.id}" onclick="onSelectImg(this)">`)
+    
+    elGal.innerHTML = addImgStr + strHtml.join('')
 }
 
 //------------------------------------------------------------------------------------------------------------/
 function renderMemes() {
     console.log('render memes')
     // class: memes-gallery
+    const memes = getMemes()
+    let elMemes = document.querySelector('.memes-gallery')
 
+    let strHtml = imgs.map((img) => `<img src="${img.url}" alt="img.id:${img.id}" id="${img.id}" onclick="onSelectImg(this)">`)
+    
+    elMemes.innerHTML = addImgStr + strHtml.join('')
 }
 
 function renderAbout() {
@@ -73,5 +82,37 @@ function onSelectImg(elImg) {
     document.querySelector('.image-gallery').classList.remove('open')
 
     let imgId = elImg.id
+    setQueryParams({ editingImageId: imgId })
     renderEditor(imgId)
+}
+
+function onBackToGallery() {
+    document.querySelector('.image-gallery').classList.add('open')
+    setQueryParams({ gallery: 'images' })
+    document.querySelector('.meme-editor').classList.remove('open')
+    deleteQueryParam('editingImageId')
+}
+
+// upload image
+function onImgInput(ev) {
+    console.log(ev)
+    loadImageFromInput(ev, renderImg)
+    // addImage(imageSrc)
+}
+function loadImageFromInput(ev, onImageReady) {
+    const reader = new FileReader()
+    // After we read the file
+    reader.onload = function (event) {
+        let img = new Image() // Create a new html img element
+        img.src = event.target.result // Set the img src to the img file we read
+        // Run the callBack func, To render the img on the canvas
+        img.onload = onImageReady.bind(null, img)
+        // Can also do it this way:
+        // img.onload = () => onImageReady(img)
+    }
+    reader.readAsDataURL(ev.target.files[0]) // Read the file we picked
+}
+function renderImg(img) {
+    // Draw the img on the canvas
+    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 }

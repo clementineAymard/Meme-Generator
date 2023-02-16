@@ -24,20 +24,47 @@
         <section class="image-gallery"></section>
 
         <main class="meme-editor grid">
-            <div onclick="onInit()">back to gallery</div>
+            <div class="back-btn" onclick="onBackToGallery()">back to gallery</div>
             <div class="canvas-container">
                 <canvas></canvas>
             </div>
-            <div class="tool-box">tool-box
+            <div class="tool-box">
+                <input type="text" class="text-line" oninput="onAddText('txt', this.value)" placeholder="Type your text here">
                 
-                <button class="btn-save">
-                    <a href="#" onclick="downloadCanvas(this)" download="file-name">SAVE</a>
+                <button class="btn-download">
+                    <a href="#" onclick="downloadCanvas(this)" download="file-name" title="Save and Download Meme"
+                        class="fas save"></a>
                 </button>
-                <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
 
-                <button class="btn" onclick="onUploadImg()">
-                  Upload Image from Canvas
+                <button class="btn-share" onclick="onUploadImg()" title="Upload Meme to FaceBook">
+                    <span class="far share"></span>
                 </button>
+
+                <button class="decrease-f-s" onclick="onAddText('size', -1)" title="Decrease Font-Size">A-</button>
+                <button class="increase-f-s" onclick="onAddText('size', 1)" title="Increase Font-Size">A+</button>
+
+                <select class="select-f-f" onchange="onAddText('font_family', this.value)" title="Change Font-Family" value="Impact">
+                    <option value="'Impact'" selected style="font-family: Impact;">Impact</option>
+                    <option value="'Arial'" style="font-family: Arial;">Arial</option>
+                    <option value="'Times New Roman'" style="font-family: Times New Roman;">Times New Roman</option>
+                    <option value="'meow'" style="font-family: meow;">Meow Script</option>
+                </select>
+
+                <label class="txt-fill-clr" for="fill-clr">Text Color :
+                </label>
+                    <input type="color"  id="fill-clr" oninput="onAddText('color', this.value)">
+                <label class="txt-border-clr" for="border-clr">Text Border Color :
+                </label>
+                    <input type="color"  id="border-clr" oninput="onAddText('stroke_color', this.value)">
+                <!-- <button class="btn-i" onclick="" title="Font Italic"><span class="far italic"></span></button>
+                <button class="btn-b" onclick="" title="Font Bold"><span class="far bold"></span></button>
+                <button class="btn-u" onclick="" title="Font Underline"><span class="far underline"></span></button>
+                
+                <button class="btn-a-l" onclick="" title="Align to Left"><span class="far align-left"></span></button>
+                <button class="btn-a-c" onclick="" title="Align to Center"><span class="far align-center"></span></button>
+                <button class="btn-a-r" onclick="" title="Align to Right"><span class="far align-right"></span></button> -->
+
+                <button class="btn-save" onclick="onSaveMeme()">SAVE TO MEMES</button>
             </div>
         </main>
 

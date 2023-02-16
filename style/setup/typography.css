@@ -7,3 +7,79 @@
     font-family: varela;
     src: url("/fonts/Varela_Round/VarelaRound-Regular.ttf");
 }
+
+/* font awesome */
+@font-face {
+    font-family: fab;
+    src: url("/fonts/fontAwesome/fa-brands-400.ttf");
+}
+
+.fab::before {
+    font-family: fab;
+}
+
+.fab.facebook::before {
+content: "\f39e";
+}
+
+/***********************************************************************************/
+
+@font-face {
+    font-family: far;
+    src: url("/fonts/fontAwesome/fa-regular-400.ttf");
+}
+
+.far::before{
+    font-family: far;
+}
+
+.far.font-size::before{
+    content: '\f894';
+}
+
+.far.font-family::before{
+    content: '\f031';
+}
+
+.far.italic::before{
+    content: '\f033';
+}
+
+.far.underline::before{
+    content: '\f0cd';
+}
+
+.far.bold::before{
+    content: '\f032';
+}
+
+.far.align-right::before{
+    content: '\f038';
+}
+.far.align-left::before{
+    content: '\f036';
+}
+.far.align-center::before{
+    content: '\f037';
+}
+.far.share::before{
+    content: '\f14d';
+}
+
+/***********************************************************************************/
+
+@font-face {
+    font-family: fas;
+    src: url("/fonts/fontAwesome/fa-solid-900.ttf");
+}
+
+.fas::before {
+    font-family: fas;
+}
+
+.fas.arrows4::before{
+    content: '\f0b2';
+}
+.fas.save::before{
+    content: '\f019';
+}

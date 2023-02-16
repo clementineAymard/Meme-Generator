@@ -1,4 +1,13 @@
 .tool-box{
-    background-color: lightsteelblue;  
-     
+    background-color: lightsteelblue;
+    padding:1rem;
 }
+
+.tool-box button {
+    cursor: pointer;
+}
+.btn-download a {
+    text-decoration: none;
+    color: inherit;
+}
+

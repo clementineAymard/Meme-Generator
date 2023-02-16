@@ -10,6 +10,21 @@
     position: absolute;
     translate: 0 -150%;
 
+    margin-top: 1.5rem;
+}
+
+.back-btn {
+    position: absolute;
+    top: -2rem;
+    cursor: pointer;
+    padding: 2px;
+    border:solid 2px black;
+    border-radius: 14px;
+}
+
+.back-btn:hover {
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 .meme-editor.open {

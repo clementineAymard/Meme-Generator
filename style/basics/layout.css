@@ -17,5 +17,38 @@ body {
 }
 
 .tool-box {
-    /* display: grid; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 45px);
+    grid-template-rows: repeat(auto-fit, 45px);
+    gap: 1rem;
+}
+
+.text-line {
+    grid-column: 1 / 6;
+}
+
+.select-f-f {
+    grid-column: 3 / 6;
+}
+
+.txt-border-clr,
+.txt-fill-clr {
+    font-size: 0.8rem;
+    text-align: right;
+    margin-block: auto;
+}
+
+.txt-fill-clr {
+    grid-column: 1 / 3;
+}
+
+.txt-border-clr {
+    grid-column: 4 / 7;
+}
+.tool-box input[type="color"]{
+    margin-block: auto;
+}
+
+.tool-box .btn-save {
+    grid-column: 1 / 2;
 }
