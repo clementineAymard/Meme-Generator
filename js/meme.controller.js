@@ -105,8 +105,9 @@ function onNextLine() {
     document.querySelector('.text-line').value = lines[selectedLineIdx].txt
 }
 
-// download to computer
+//------------------------ download to computer-------------------------//
 function downloadCanvas(elLink) {
+    onSaveMeme()
     const data = gElCanvas.toDataURL()
     elLink.href = data
     elLink.download = 'my-meme'
@@ -114,7 +115,7 @@ function downloadCanvas(elLink) {
     // saveMeme()
 }
 
-// upload to FB
+//---------------------------upload to FB--------------------------------//
 function onUploadImg() {
     const imgDataUrl = gElCanvas.toDataURL('image/jpeg') // Gets the canvas content as an image format
 
@@ -156,7 +157,7 @@ function doUploadImg(imgDataUrl, onSuccess) {
     XHR.send(formData)
 }
 
-//save to memes and local strorage db
+//------------------save to memes and local strorage db-------------------//
 function onSaveMeme() {
     saveMeme()
 }

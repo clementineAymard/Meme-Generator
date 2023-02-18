@@ -1,0 +1,112 @@
+/* MEDIUM */
+@media (max-width:920px) {
+    .main-section .meme-editor {
+        grid-template-columns: repeat(2, 300px);
+        grid-template-rows: 300px;
+        gap: 2rem;
+    }
+    .tool-box > * {
+        font-size: 12px;
+    }
+}
+
+/* SMALL: */
+
+@media (max-width: 630px) {
+    :root {
+        --imgDim: 170px;
+    }
+
+    .logo {
+        margin-inline-start: 1rem;
+    }
+
+    header {
+        height: 3rem;
+    }
+
+    .header-container nav ul {
+        flex-direction: column;
+        align-items: end;
+
+        height: fit-content;
+        width: fit-content;
+
+        transform: translateY(-100vh);
+        transition: transform 0.6s;
+
+        position: fixed;
+        top: 70px;
+        right: 0;
+    }
+
+    .header-container nav li {
+        border-block-start: lightyellow 1px solid;
+        width: fit-content;
+        width: 180px;
+        height: 60px;
+        background-color: lightgrey;
+        color: black;
+    }
+
+    .header-container nav li:last-child {
+        border-block-end: solid 1px lightyellow;
+    }
+
+    .header-container nav li.selected {
+        background-color: grey;
+    }
+
+    .header-container .toggle-menu {
+        margin-inline-start: auto;
+    }
+
+    .header-container .toggle-menu::before {
+        content: "☰";
+        font-size: 3em;
+        cursor: pointer;
+    }
+
+
+    body.menu-open {
+        /* SCROLLING DISABLED */
+        height: 100%;
+        overflow: hidden;
+        /* TEXT SELECTION DISABLED/LOCKED */
+        user-select: none;
+    }
+
+    body.menu-open .header-container nav ul {
+        transform: translateY(-20px);
+    }
+
+
+
+    body.menu-open .header-container .toggle-menu::before {
+        content: "X";
+        font-size: 2rem
+    }
+
+    .main-section about.open {
+        font-size: 0.65rem;
+    }
+
+    .main-section .meme-editor {
+        grid-template-rows: repeat(2, 300px);
+        grid-template-columns: 300px;
+    }
+
+    .tool-box {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 25px);
+        grid-template-rows: repeat(auto-fit, 25px);
+        gap: 1rem;
+    }
+
+    .tool-box > * {
+        font-size: 10px;
+    }
+}
+
+
+@media (min-width:360px) {}

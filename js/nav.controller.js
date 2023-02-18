@@ -16,6 +16,7 @@ function selectItem(elMenuItem) {
 
     unSelectRest(menuItem)
     render(menuItem)
+    document.body.classList.remove('menu-open') // FOR MOBILE HAMB MENU: CLOSE MENU
 }
 
 function unSelectRest(menuItem) {

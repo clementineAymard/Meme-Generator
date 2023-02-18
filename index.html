@@ -10,8 +10,9 @@
 </head>
 
 <body onload="onInit()" class="grid">
-    <header class="flex align-center space-between">
+    <div class="header-container"><header class="flex align-center space-between">
         <div class="logo">meme-gen</div>
+        <div type="button" class="toggle-menu" onclick="openMenu()"></div>
         <nav>
             <ul class="clean-list flex space-evenly">
                 <li class="image-gallery" onclick="onSelectMenuItem(this)">Gallery</li>
@@ -20,7 +21,7 @@
                 <li class="about" onclick="onSelectMenuItem(this)">About</li>
             </ul>
         </nav>
-    </header>
+    </header></div>
     <div class="main-section">
         <section class="image-gallery"></section>
 
@@ -30,8 +31,9 @@
                 <canvas></canvas>
             </div>
             <div class="tool-box">
-                <input type="text" class="text-line" oninput="onEditLine('txt', this.value)" placeholder="Type your text here">
-                
+                <input type="text" class="text-line" oninput="onEditLine('txt', this.value)"
+                    placeholder="Type your text here">
+
                 <button class="btn-download">
                     <a href="#" onclick="downloadCanvas(this)" download="file-name" title="Save and Download Meme"
                         class="fas save"></a>
@@ -44,42 +46,63 @@
                 <button class="decrease-f-s" onclick="onEditLine('size', -1)" title="Decrease Font-Size">A-</button>
                 <button class="increase-f-s" onclick="onEditLine('size', 1)" title="Increase Font-Size">A+</button>
 
-                <select class="select-f-f" onchange="onEditLine('font_family', this.value)" title="Change Font-Family" value="Impact">
+                <select class="select-f-f" onchange="onEditLine('font_family', this.value)" title="Change Font-Family"
+                    value="Impact">
                     <option value="'Impact'" selected style="font-family: Impact;">Impact</option>
                     <option value="'Arial'" style="font-family: Arial;">Arial</option>
                     <option value="'Times New Roman'" style="font-family: Times New Roman;">Times New Roman</option>
                     <option value="'meow'" style="font-family: meow;">Meow Script</option>
                 </select>
                 <button class="btn-add-line" onclick="onAddLine()" title="Click to add a line of Text">Add Line</button>
-                <button class="btn-select-next-line" onclick="onNextLine()" title="Click to select next line (first is top, second is bottom, third is center)"><span class="fas arrow"></span></button>
+                <button class="btn-select-next-line" onclick="onNextLine()"
+                    title="Click to select next line (first is top, second is bottom, third is center)"><span
+                        class="fas arrow"></span></button>
                 <button class="btn-save" onclick="onSaveMeme()" title="Save to Memes">SAVE</button>
 
                 <label class="txt-fill-clr" for="fill-clr">Text Color :
                 </label>
-                    <input type="color"  id="fill-clr" oninput="onEditLine('color', this.value)">
+                <input type="color" id="fill-clr" oninput="onEditLine('color', this.value)">
                 <label class="txt-border-clr" for="border-clr">Text Border Color :
                 </label>
-                    <input type="color"  id="border-clr" oninput="onEditLine('stroke_color', this.value)">
+                <input type="color" id="border-clr" oninput="onEditLine('stroke_color', this.value)">
 
                 <!-- <button class="btn-i" value="italic" onclick="onEditLine('style', this.value)" title="Font Italic"><span class="fas italic"></span></button> -->
-                <button class="btn-b" value="bold" onclick="onEditLine('weight', this.value)" title="Font Bold"><span class="fas bold"></span></button>
-                
-                <button class="btn-a-l" value="end" onclick="onEditLine('align', this.value)" title="Align to Left"><span class="fas align-left"></span></button>
-                <button class="btn-a-c" value="center" onclick="onEditLine('align', this.value)" title="Align to Center"><span class="fas align-center"></span></button>
-                <button class="btn-a-r" value="start" onclick="onEditLine('align', this.value)" title="Align to Right"><span class="fas align-right"></span></button>
+                <button class="btn-b" value="bold" onclick="onEditLine('weight', this.value)" title="Font Bold"><span
+                        class="fas bold"></span></button>
+
+                <button class="btn-a-l" value="end" onclick="onEditLine('align', this.value)"
+                    title="Align to Left"><span class="fas align-left"></span></button>
+                <button class="btn-a-c" value="center" onclick="onEditLine('align', this.value)"
+                    title="Align to Center"><span class="fas align-center"></span></button>
+                <button class="btn-a-r" value="start" onclick="onEditLine('align', this.value)"
+                    title="Align to Right"><span class="fas align-right"></span></button>
 
             </div>
         </main>
 
         <section class="memes-gallery"></section>
 
-        <div class="about"></div>
+        <div class="about">
+            <h1>Meme Generator</h1>
+            <p>This app is a meme generator.</p>
+            <p> Here's how to use it : select an image from the gallery
+                or upload one from your computer, and edit it in the meme editor.</p>
+            <p>
+                There, you can insert multiple lines and edit each line of text. </p>
+            <p> Then, you
+                can save it to your memes, and go back to editing it later from the memes gallery.</p>
+            <p>
+                You can also choose to download the meme to your computer, or share it on FaceBook.</p>
+            <p>
+                Have Fun ! </p>
+            <p>made By Clementine Aymard</p>
+        </div>
     </div>
     <footer>Cozyrights © Clementine Aymard </footer>
 
     <script src="/js/service/util.service.js"></script>
     <script src="/js/service/memes.service.js"></script>
-    <script src="/js/service/nav.service.js"></script>
+    <script src="/js/nav.controller.js"></script>
     <script src="/js/meme.controller.js"></script>
     <script src="/js/main.controller.js"></script>
 </body>

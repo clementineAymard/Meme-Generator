@@ -8,9 +8,9 @@
     pointer-events: none;
 
     position: absolute;
-    translate: 0 -150%;
+    translate: -200% -200%;
 
-    margin-top: 1.5rem;
+    margin-top: 6rem;
 }
 
 .main-section .back-btn {
@@ -18,7 +18,7 @@
     top: -2rem;
     cursor: pointer;
     padding: 2px;
-    border:solid 2px black;
+    border: solid 2px black;
     border-radius: 14px;
 }
 
@@ -30,12 +30,12 @@
 .main-section .meme-editor.open {
     opacity: 1;
     pointer-events: all;
-    translate: -50% 0;
+    translate: -50% 0%;
     left: 50vw;
 }
 
 .canvas-container {
-    background-color: green;
+    background-color: white;
 }
 
 /* canvas {

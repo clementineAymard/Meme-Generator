@@ -3,6 +3,7 @@
 // localStorage.clear()
 const STORAGE_KEY_MEMES = 'memesDB'
 const STORAGE_KEY_CUR_MM = 'currMeme'
+const STORAGE_KEY_IMGS = 'imagesDB'
 
 var gMemes = []
 var gCurrMeme
@@ -26,6 +27,8 @@ var gImgs = [{ id: 1, url: '/images/1.jpg', keywords: ['funny', 'cat'] },
 { id: 16, url: '/images/16.jpg', keywords: ['funny'] },
 { id: 17, url: '/images/17.jpg', keywords: ['funny', 'two'] },
 { id: 18, url: '/images/18.jpg', keywords: ['future', 'funny'] },];
+setImgs(gImgs)
+var gNextImgId = 19
 
 var gMeme = {
     selectedImgId: 1,
@@ -54,7 +57,28 @@ function getMemes() { // saved and stored memes
 }
 
 function getImgs() {
-    return gImgs
+    const images = loadFromStorage(STORAGE_KEY_IMGS) 
+    if (!images) {
+        console.log('no current images')
+        return
+    }
+    return images
+    // return gImgs
+}
+
+function createImg(imgSource) {
+    var img = {
+        id: gNextImgId,
+        url: imgSource,
+        keywords: prompt('Please enter keywords describing the image, separated by spaces'),
+    }
+    gNextImgId++
+    return img
+}
+
+function setImgs(imgs){
+    gImgs = imgs
+    saveToStorage(STORAGE_KEY_IMGS, imgs)
 }
 
 function getImgById(imgId) {
@@ -77,7 +101,7 @@ function createMeme(imgId) {
                 style: 'normal',
                 color: 'black',
                 stroke_color: 'black',
-                pos: {x:0,y:0}
+                pos: { x: 0, y: 0 }
             }
         ]
     }
@@ -95,7 +119,7 @@ function createLine() {
         style: 'normal',
         color: 'black',
         stroke_color: 'black',
-        pos: {x:0,y:0}
+        pos: { x: 0, y: 0 }
     }
 }
 

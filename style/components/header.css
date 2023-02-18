@@ -1,7 +1,14 @@
+.header-container {
+    position: fixed;
+    width: 100vw;
+    z-index: 1;
+}
+
 header {
     background-color: var(--clrbg);
     color: var(--clrtxt);
     margin-block-end: 1rem;
+    margin-inline: 0;
 }
 
 nav {
@@ -20,7 +27,7 @@ nav li.selected {
     box-shadow: inset 0px -4px grey;
 }
 
-ul li:last-child{
+ul li:last-child {
     border-inline-start: solid 1px var(--clrtxt);
 }
 

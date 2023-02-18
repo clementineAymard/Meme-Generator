@@ -1,3 +1,7 @@
+.main-section {
+    position: relative;
+}
+
 .main-section .image-gallery {
     background-color: rgb(232, 232, 232);
     width: 92%;
@@ -12,8 +16,10 @@
 .main-section .image-gallery.open {
     opacity: 1;
     pointer-events: all;
-    translate: -50% 0;
-    left: 50vw;
+    translate: 0 0;
+    left: 5vw;
+    top: 4rem;
+    padding-block-end:4rem;
 }
 
 .main-section .image-gallery img {
@@ -31,7 +37,8 @@
     width: 100%;
     /* height: 100%; */
     /* padding: 1rem; */
-    margin-block: 30%;
+    margin: 0;
+    /* padding-block-start: 3rem; */
     text-align: center;
     font-size: 2rem;
     cursor: pointer;
@@ -42,3 +49,7 @@
 .upload-img:hover {
     background-color: rgba(128, 128, 128, 0.678);
 }
+/* 
+.file-input {
+    padding-block-start: 5rem;
+} */
