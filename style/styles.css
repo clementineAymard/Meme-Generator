@@ -1,12 +1,12 @@
 /* SETUP */
 @import './setup/vars.css';
 @import './setup/typography.css';
-./
+
 /* BASICS./ */
 @import './basics/base.css';
 @import './basics/layout.css';
 @import './basics/helpers.css';
-./
+
 /* COMPON./ENTS */
 @import './components/header.css';
 @import './components/logo.css';
