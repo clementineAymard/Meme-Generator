@@ -9,9 +9,8 @@ function onInit() {
         menuItem = 'image-gallery'
     }
     selectItem(document.querySelector(`.${menuItem}`))
+
     render(menuItem)
-    // let isEditing = getValFromParam('editingImageId')
-    // if (isEditing) renderMeme(isEditing)
 }
 
 function render(menuItem) {
@@ -22,7 +21,7 @@ function render(menuItem) {
 //--------------------------------------------------IMAGES----------------------------------------------------------/
 function renderGallery() {
     console.log('render images')
-    document.querySelector('.meme-editor').classList.remove('open')
+    // document.querySelector('.meme-editor').classList.remove('open')
 
     const imgs = getImgs()
     const addImgStr = `<label class="upload-img" for="file-input">Add image
@@ -55,9 +54,14 @@ function onSelectMenuItem(elMenuItem) {
     selectItem(elMenuItem)
 }
 
+function onNavHome(){
+    selectItem(document.querySelector('.image-gallery'))
+}
+
 function openMenu(){
     document.body.classList.toggle('menu-open') // FOR MOBILE HAMB MENU: OPEN MENU
 }
+
 function onSelectImg(elImg) {
     selectItem(document.querySelector('.meme-editor'))
 
@@ -67,10 +71,10 @@ function onSelectImg(elImg) {
     startMeme()
 }
 
-function onBackToGallery() {
-    let elMenuItem = document.querySelector('.main-section .image-gallery')
-    selectItem(elMenuItem)
-}
+// function onBackToGallery() {
+//     let elMenuItem = document.querySelector('.main-section .image-gallery')
+//     selectItem(elMenuItem)
+// }
 
 function onSelectMeme(memeIdx) {
     let memes = getMemes()
@@ -83,7 +87,7 @@ function onSelectMeme(memeIdx) {
     renderMeme(meme.selectedImgId)
 }
 
-//----------------------------------------------------TODO------------------------------------------------------------/
+//----------------------------------------------------ADD IMG------------------------------------------------------------/
 // upload image
 function onImgInput(ev) {
     // console.log(ev)

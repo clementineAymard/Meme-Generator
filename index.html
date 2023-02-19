@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/styles.css">
+    <link rel="stylesheet" href="./style/main.css">
     <title>Meme Generator</title>
 </head>
 
 <body onload="onInit()" class="grid">
     <div class="header-container">
         <header class="flex align-center space-between">
-            <div class="logo">meme-gen</div>
+            <div class="logo" onclick="onNavHome()">meme-gen</div>
             <div type="button" class="toggle-menu" onclick="openMenu()"></div>
             <nav>
                 <ul class="clean-list flex space-evenly">
@@ -27,8 +27,8 @@
     <div class="main-section">
         <section class="image-gallery"></section>
 
-        <main class="meme-editor grid">
-            <div class="back-btn" onclick="onBackToGallery()">back to gallery</div>
+        <main class="meme-editor grid hide">
+            <!-- <div class="back-btn" onclick="onBackToGallery()">back to gallery</div> -->
             <div class="canvas-container">
                 <canvas></canvas>
             </div>
@@ -36,10 +36,11 @@
                 <input type="text" class="text-line" oninput="onEditLine('txt', this.value)"
                     placeholder="Type your text here">
 
-
-
-                <button class="decrease-f-s" onclick="onEditLine('size', -1)" title="Decrease Font-Size">A-</button>
-                <button class="increase-f-s" onclick="onEditLine('size', 1)" title="Increase Font-Size">A+</button>
+                <button class="btn-add-line" onclick="onAddLine()" title="Add a line of text">+</button>
+                <button class="btn-select-next-line" onclick="onNextLine()"
+                    title="Click to select next line (first is top, second is bottom, third is center)">
+                    <span class="fas arrow"></span>
+                </button>
 
                 <select class="select-f-f" onchange="onEditLine('font_family', this.value)" title="Change Font-Family"
                     value="Impact">
@@ -48,10 +49,9 @@
                     <option value="'Times New Roman'" style="font-family: Times New Roman;">Times New Roman</option>
                     <option value="'meow'" style="font-family: meow;">Meow Script</option>
                 </select>
-                <button class="btn-add-line" onclick="onAddLine()" title="Add a line of text">+</button>
-                <button class="btn-select-next-line" onclick="onNextLine()"
-                    title="Click to select next line (first is top, second is bottom, third is center)"><span
-                        class="fas arrow"></span></button>
+
+                <button class="decrease-f-s" onclick="onEditLine('size', -1)" title="Decrease Font-Size">A-</button>
+                <button class="increase-f-s" onclick="onEditLine('size', 1)" title="Increase Font-Size">A+</button>
 
                 <label class="txt-fill-clr" for="fill-clr">
                     <input type="color" id="fill-clr" title="Text Color" oninput="onEditLine('color', this.value)">
@@ -61,7 +61,6 @@
                         oninput="onEditLine('stroke_color', this.value)">
                 </label>
 
-                <!-- <button class="btn-i" value="italic" onclick="onEditLine('style', this.value)" title="Font Italic"><span class="fas italic"></span></button> -->
                 <button class="btn-b" value="bold" onclick="onEditLine('weight', this.value)" title="Font Bold"><span
                         class="fas bold"></span></button>
 
@@ -87,9 +86,9 @@
             </div>
         </main>
 
-        <section class="memes-gallery"></section>
+        <section class="memes-gallery hide"></section>
 
-        <div class="about">
+        <div class="about hide">
             <h1>Meme Generator</h1>
             <p>This app is a meme generator.</p>
             <p> Here's how to use it : select an image from the gallery

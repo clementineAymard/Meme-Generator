@@ -3,23 +3,6 @@
     padding: 0.5rem;
     width: max-content;
     background-color: var(--clr-bg-grey);
-
-    opacity: 0;
-    pointer-events: none;
-
-    position: absolute;
-    translate: -200% -200%;
-
-    margin-top: 6rem;
-}
-
-.main-section .back-btn {
-    position: absolute;
-    top: -2rem;
-    cursor: pointer;
-    padding: 2px;
-    border: solid 2px black;
-    border-radius: 14px;
 }
 
 .main-section .back-btn:hover {
@@ -27,19 +10,9 @@
     font-weight: bold;
 }
 
-.main-section .meme-editor.open {
-    opacity: 1;
-    pointer-events: all;
-    translate: -50% 0%;
-    left: 50vw;
-}
-
 .canvas-container {
     background-color: white;
 }
-
-/* canvas {
-} */
 
 .main-section .meme-editor image {
     aspect-ratio: 1 / 1;

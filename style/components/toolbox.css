@@ -1,5 +1,5 @@
 .tool-box {
-    background-color: var(--clr-bg-dark-grey);
+    background-color: var(--clr-bg-toolbox);
     padding: 3rem;
 }
 
@@ -33,10 +33,11 @@
 
 .tool-box .text-line {
     width: 300px;
+    cursor: text;
 }
 
 .tool-box .btn-add-line {
-    font-weight: bold;
+    font-size: 27px;
 }
 
 .btn-download a {
@@ -50,14 +51,16 @@
     box-shadow: 0px 0px 2px 1px var(--clr-bg-grey);
     border-radius: 15px;
     padding: 0;
+    display: flex;
+    place-content: center;
 }
 
 .tool-box :is(.txt-fill-clr, .txt-border-clr) input {
-    /* margin-block: auto; */
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
     border: none;
-    padding: 0;
+    padding: 4px;
 }
 
 .tool-box .btns-share {

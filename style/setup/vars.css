@@ -1,6 +1,9 @@
 :root {
     --clrbg: #282828;
-    --clrtxt : white;
-    --clr-bg-grey : rgb(232, 232, 232);
-    --clr-bg-dark-grey : rgb(201, 201, 201); 
+    --clrtxt: white;
+    --clr-selected: grey;
+    --clr-transp-grey: #80808099;
+    --clr-bg-grey: rgb(232, 232, 232);
+    --clr-bg-dark-grey: rgb(201, 201, 201);
+    --clr-bg-toolbox: rgb(186 215 206);
 }

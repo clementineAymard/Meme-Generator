@@ -7,8 +7,9 @@ function selectItem(elMenuItem) {
     // console.log('f selectItem')
     elMenuItem.classList.add('selected') // NAV BAR
     const menuItem = elMenuItem.classList[0]
-    console.log(menuItem)
-    document.querySelector(`.main-section .${menuItem}`).classList.add('open') // MAIN SECTIONS
+    // console.log(menuItem)
+    document.querySelector(`.main-section .${menuItem}`).classList.remove('hide') // MAIN SECTIONS
+    // document.querySelector(`.main-section .${menuItem}`).hidden = 'false' // MAIN SECTIONS
     setQueryParams({ menu: menuItem })
     if (menuItem !== 'meme-editor') deleteQueryParam('editingImageId')
 
@@ -24,7 +25,7 @@ function unSelectRest(menuItem) {
     var currItemIdx = items.findIndex((item) => item === menuItem)
     items.splice(currItemIdx, 1)
     items.forEach(item => {document.querySelector(`li.${item}`).classList.remove('selected')}) // NAV BAR
-    items.forEach(item => {document.querySelector(`.main-section .${item}`).classList.remove('open')}) // MAIN SECTIONS
+    items.forEach(item => {document.querySelector(`.main-section .${item}`).classList.add('hide')}) // MAIN SECTIONS
     // console.log(items)
 }
 

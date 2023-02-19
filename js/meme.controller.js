@@ -1,7 +1,7 @@
 'use strict'
 let gElCanvas
 let gCtx
-let gPos = [{ x: 225, y: 50 }, { x: 225, y: 400 }, { x: 225, y: 225 }]
+let gPos = [0.15, 0.85, 0.5]
 
 function renderEditor() {
     console.log('render editor')
@@ -68,7 +68,8 @@ function drawImg(id) {
 }
 
 function drawText({ txt, size, align, color, font_family, stroke_color, weight }, lineIdx) {
-    const { x, y } = gPos[lineIdx]
+    const fact = gPos[lineIdx]
+    const { x, y } = { x: gElCanvas.width/2, y: gElCanvas.height*fact}
     gCtx.lineWidth = 1
     gCtx.strokeStyle = stroke_color
     gCtx.fillStyle = color

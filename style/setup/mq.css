@@ -5,8 +5,24 @@
         grid-template-rows: 300px;
         gap: 2rem;
     }
-    .tool-box > * {
+
+    .tool-box>* {
         font-size: 12px;
+    }
+
+    .tool-box {
+        padding: 1em;
+        gap: 0.5em
+    }
+
+
+
+    .tool-box .text-line {
+        width: 200px;
+    }
+
+    .tool-box .select-f-f {
+        width: 100px;
     }
 }
 
@@ -38,6 +54,7 @@
         position: fixed;
         top: 70px;
         right: 0;
+        z-index: 1;
     }
 
     .header-container nav li {
@@ -54,7 +71,7 @@
     }
 
     .header-container nav li.selected {
-        background-color: grey;
+        background-color: var(--clr-selected);
     }
 
     .header-container .toggle-menu {
@@ -67,46 +84,30 @@
         cursor: pointer;
     }
 
-
-    body.menu-open {
-        /* SCROLLING DISABLED */
-        height: 100%;
-        overflow: hidden;
-        /* TEXT SELECTION DISABLED/LOCKED */
-        user-select: none;
-    }
-
     body.menu-open .header-container nav ul {
         transform: translateY(-20px);
     }
-
-
 
     body.menu-open .header-container .toggle-menu::before {
         content: "X";
         font-size: 2rem
     }
 
-    .main-section about.open {
-        font-size: 0.65rem;
-    }
-
     .main-section .meme-editor {
         grid-template-rows: repeat(2, 300px);
         grid-template-columns: 300px;
-    }
-
-    .tool-box {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, 25px);
-        grid-template-rows: repeat(auto-fit, 25px);
         gap: 1rem;
     }
 
-    .tool-box > * {
+    .tool-box>* {
         font-size: 10px;
+    }
+
+    .main-section .about {
+        width: 85vw;
+        font-size: 0.8rem;
     }
 }
 
 
-@media (min-width:360px) {}
+@media (min-width:630px) {}
