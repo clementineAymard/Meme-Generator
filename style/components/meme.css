@@ -1,5 +1,5 @@
 .main-section .memes-gallery {
-    background-color: rgb(232, 232, 232);
+    background-color: var(--clr-bg-grey);
     width: 92%;
     padding: 1rem;
     translate: 0 -150%;

@@ -7,7 +7,7 @@ body {
     display: grid;
     gap: 0.5em;
     grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
-    grid-template-rows:repeat(auto-fit, minmax(135px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(135px, 1fr));
     grid-auto-flow: dense;
 }
 
@@ -17,41 +17,35 @@ body {
     gap: 2rem;
 }
 
+/* ---------------------------------------------------------------------------- */
 .tool-box {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 45px);
-    grid-template-rows: repeat(auto-fit, 45px);
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     gap: 1rem;
 }
 
 .text-line {
-    grid-column: 1 / 6;
+    grid-column: 1 / -1;
 }
 
-.select-f-f {
+.tool-box .select-f-f {
     grid-column: 3 / 6;
 }
 
-.txt-border-clr,
-.txt-fill-clr {
-    font-size: 0.8rem;
-    text-align: right;
-    margin-block: auto;
+.tool-box .btn-a-l {
+    grid-column: 2;
+}
+.tool-box .btns-share {
+    grid-row: 5;
+    grid-column: 1 / -1;
 }
 
-.txt-fill-clr {
-    grid-column: 1 / 3;
-}
-
-.txt-border-clr {
-    grid-column: 4 / 7;
-}
-
-
+/* ---------------------------------------------------------------------------- */
 .main-section .memes-gallery {
     display: grid;
     gap: 0.5em;
     grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
-    grid-template-rows:repeat(auto-fit, minmax(135px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(135px, 1fr));
     grid-auto-flow: dense;
 }

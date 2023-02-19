@@ -1,10 +1,42 @@
 .tool-box {
-    background-color: lightsteelblue;
-    padding: 1rem;
+    background-color: var(--clr-bg-dark-grey);
+    padding: 3rem;
 }
 
-.tool-box button {
+.tool-box *:not(.btns-share) {
+    align-self: center;
+    justify-self: center;
+    padding: 5px;
+    background-color: var(--clrtxt);
     cursor: pointer;
+}
+
+.tool-box :is(button, input, select) {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin: 0;
+    border: none;
+
+    box-shadow: 0px 0px 2px 1px var(--clr-bg-grey);
+    border-radius: 15px;
+}
+
+
+.tool-box :is(.text-line, .select-f-f) {
+    height: 30px;
+    width: 200px;
+    border-radius: 15px;
+    padding-inline: 10px;
+    border: none;
+}
+
+.tool-box .text-line {
+    width: 300px;
+}
+
+.tool-box .btn-add-line {
+    font-weight: bold;
 }
 
 .btn-download a {
@@ -12,10 +44,43 @@
     color: inherit;
 }
 
-.tool-box input[type="color"] {
+.tool-box :is(.txt-fill-clr, .txt-border-clr) {
+    width: 40px;
+    height: 40px;
+    box-shadow: 0px 0px 2px 1px var(--clr-bg-grey);
+    border-radius: 15px;
+    padding: 0;
+}
+
+.tool-box :is(.txt-fill-clr, .txt-border-clr) input {
+    /* margin-block: auto; */
+    width: 30px;
+    height: 30px;
+    border: none;
+    padding: 0;
+}
+
+.tool-box .btns-share {
+    border-block-start: solid 1px white;
+    padding-block-start: 1em;
+}
+
+.tool-box .btns-share button {
+    width: 60px;
+
+}
+
+.txt-border-clr,
+.txt-fill-clr {
+    font-size: 0.8rem;
+    text-align: right;
     margin-block: auto;
 }
 
-.tool-box .btn-save {
-    padding: 0
+.tool-box .btns-share {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    gap: 10%;
+    height: 100%;
 }

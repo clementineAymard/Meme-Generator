@@ -1,4 +1,6 @@
 :root {
-    --clrbg: #000000;
+    --clrbg: #282828;
     --clrtxt : white;
+    --clr-bg-grey : rgb(232, 232, 232);
+    --clr-bg-dark-grey : rgb(201, 201, 201); 
 }

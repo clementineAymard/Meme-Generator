@@ -10,18 +10,20 @@
 </head>
 
 <body onload="onInit()" class="grid">
-    <div class="header-container"><header class="flex align-center space-between">
-        <div class="logo">meme-gen</div>
-        <div type="button" class="toggle-menu" onclick="openMenu()"></div>
-        <nav>
-            <ul class="clean-list flex space-evenly">
-                <li class="image-gallery" onclick="onSelectMenuItem(this)">Gallery</li>
-                <li class="meme-editor" onclick="onSelectMenuItem(this)">Editor</li>
-                <li class="memes-gallery" onclick="onSelectMenuItem(this)">Memes</li>
-                <li class="about" onclick="onSelectMenuItem(this)">About</li>
-            </ul>
-        </nav>
-    </header></div>
+    <div class="header-container">
+        <header class="flex align-center space-between">
+            <div class="logo">meme-gen</div>
+            <div type="button" class="toggle-menu" onclick="openMenu()"></div>
+            <nav>
+                <ul class="clean-list flex space-evenly">
+                    <li class="image-gallery" onclick="onSelectMenuItem(this)">Gallery</li>
+                    <li class="meme-editor" onclick="onSelectMenuItem(this)">Editor</li>
+                    <li class="memes-gallery" onclick="onSelectMenuItem(this)">Memes</li>
+                    <li class="about" onclick="onSelectMenuItem(this)">About</li>
+                </ul>
+            </nav>
+        </header>
+    </div>
     <div class="main-section">
         <section class="image-gallery"></section>
 
@@ -34,14 +36,7 @@
                 <input type="text" class="text-line" oninput="onEditLine('txt', this.value)"
                     placeholder="Type your text here">
 
-                <button class="btn-download">
-                    <a href="#" onclick="downloadCanvas(this)" download="file-name" title="Save and Download Meme"
-                        class="fas save"></a>
-                </button>
 
-                <button class="btn-share" onclick="onUploadImg()" title="Upload Meme to FaceBook">
-                    <span class="far share"></span>
-                </button>
 
                 <button class="decrease-f-s" onclick="onEditLine('size', -1)" title="Decrease Font-Size">A-</button>
                 <button class="increase-f-s" onclick="onEditLine('size', 1)" title="Increase Font-Size">A+</button>
@@ -53,18 +48,18 @@
                     <option value="'Times New Roman'" style="font-family: Times New Roman;">Times New Roman</option>
                     <option value="'meow'" style="font-family: meow;">Meow Script</option>
                 </select>
-                <button class="btn-add-line" onclick="onAddLine()" title="Click to add a line of Text">Add Line</button>
+                <button class="btn-add-line" onclick="onAddLine()" title="Add a line of text">+</button>
                 <button class="btn-select-next-line" onclick="onNextLine()"
                     title="Click to select next line (first is top, second is bottom, third is center)"><span
                         class="fas arrow"></span></button>
-                <button class="btn-save" onclick="onSaveMeme()" title="Save to Memes">SAVE</button>
 
-                <label class="txt-fill-clr" for="fill-clr">Text Color :
+                <label class="txt-fill-clr" for="fill-clr">
+                    <input type="color" id="fill-clr" title="Text Color" oninput="onEditLine('color', this.value)">
                 </label>
-                <input type="color" id="fill-clr" oninput="onEditLine('color', this.value)">
-                <label class="txt-border-clr" for="border-clr">Text Border Color :
+                <label class="txt-border-clr" for="border-clr">
+                    <input type="color" id="border-clr" title="Text Border Color"
+                        oninput="onEditLine('stroke_color', this.value)">
                 </label>
-                <input type="color" id="border-clr" oninput="onEditLine('stroke_color', this.value)">
 
                 <!-- <button class="btn-i" value="italic" onclick="onEditLine('style', this.value)" title="Font Italic"><span class="fas italic"></span></button> -->
                 <button class="btn-b" value="bold" onclick="onEditLine('weight', this.value)" title="Font Bold"><span
@@ -77,6 +72,18 @@
                 <button class="btn-a-r" value="start" onclick="onEditLine('align', this.value)"
                     title="Align to Right"><span class="fas align-right"></span></button>
 
+                <div class="btns-share">
+                    <button class="btn-save" onclick="onSaveMeme()" title="Save to Memes">SAVE</button>
+
+                    <button class="btn-download">
+                        <a href="#" onclick="downloadCanvas(this)" download="file-name" title="Save and Download Meme"
+                            class="fas save"></a>
+                    </button>
+
+                    <button class="btn-share" onclick="onUploadImg()" title="Upload Meme to FaceBook">
+                        <span class="far share"></span>
+                    </button>
+                </div>
             </div>
         </main>
 
@@ -100,11 +107,11 @@
     </div>
     <footer>Cozyrights © Clementine Aymard </footer>
 
-    <script src="./js/service/./util.service.js"></script>
-    <script src="./js/service/./memes.service.js"></script>
-    <script src="./js/./nav.controller.js"></script>
-    <script src="./js/./meme.controller.js"></script>
-    <script src="./js/./main.controller.js"></script>
+    <script src="js/service/util.service.js"></script>
+    <script src="js/service/memes.service.js"></script>
+    <script src="js/nav.controller.js"></script>
+    <script src="js/meme.controller.js"></script>
+    <script src="js/main.controller.js"></script>
 </body>
 
 </html>
