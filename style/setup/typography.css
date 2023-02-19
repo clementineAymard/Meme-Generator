@@ -1,17 +1,17 @@
 @font-face {
     font-family: meow;
-    src: url("fonts/Meow_Script/MeowScript-Regular.ttf");
+    src: url("../../fonts/Meow_Script/MeowScript-Regular.ttf");
 }
 
 @font-face {
     font-family: varela;
-    src: url("fonts/Varela_Round/VarelaRound-Regular.ttf");
+    src: url("../../fonts/Varela_Round/VarelaRound-Regular.ttf");
 }
 
 /* font awesome */
 @font-face {
     font-family: fab;
-    src: url("fonts/fontAwesome/fa-brands-400.ttf");
+    src: url("../../fonts/fontAwesome/fa-brands-400.ttf");
 }
 
 .fab::before {
@@ -26,7 +26,7 @@
 
 @font-face {
     font-family: far;
-    src: url("fonts/fontAwesome/fa-regular-400.ttf");
+    src: url("../../fonts/fontAwesome/fa-regular-400.ttf");
 }
 
 .far::before {
@@ -48,7 +48,7 @@
 
 @font-face {
     font-family: fas;
-    src: url("fonts/fontAwesome/fa-solid-900.ttf");
+    src: url("../../fonts/fontAwesome/fa-solid-900.ttf");
 }
 
 .fas::before {
